@@ -1,0 +1,812 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Гренландия - база отдыха, хутор Бетта, Геленджик</title>
+    <meta name="description" content="База отдыха Гренландия в хуторе Бетта, Краснодарский край. Уютные домики, живописная природа, схема проезда. Цены и бронирование.">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', 'Roboto', 'Arial', sans-serif;
+            background-color: #f5f7f2;
+            color: #2c3e2f;
+            line-height: 1.5;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #1a4d2a 0%, #2e7d32 100%);
+            color: white;
+            padding: 20px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .logo h1 {
+            font-size: 1.8rem;
+            letter-spacing: 2px;
+            font-weight: 600;
+        }
+
+        .logo p {
+            font-size: 0.85rem;
+            opacity: 0.9;
+        }
+
+        .contacts-header {
+            text-align: right;
+        }
+
+        .phone {
+            font-size: 1.6rem;
+            font-weight: bold;
+            color: #ffd966;
+            text-decoration: none;
+            display: block;
+        }
+
+        .small-text {
+            font-size: 0.8rem;
+        }
+
+        .btn-book {
+            background: #ff9800;
+            color: white;
+            border: none;
+            padding: 10px 25px;
+            border-radius: 50px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: 0.3s;
+            font-weight: bold;
+        }
+
+        .btn-book:hover {
+            background: #e68900;
+            transform: scale(1.05);
+        }
+
+        .hero {
+            background: url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1600') center/cover no-repeat;
+            height: 60vh;
+            min-height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.4);
+        }
+
+        .hero-content {
+            position: relative;
+            color: white;
+            z-index: 2;
+        }
+
+        .hero-content h2 {
+            font-size: 2.8rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.5);
+        }
+
+        .hero-content p {
+            font-size: 1.3rem;
+            margin-bottom: 30px;
+        }
+
+        .section {
+            padding: 60px 0;
+            border-bottom: 1px solid #e0e8dc;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.2rem;
+            margin-bottom: 40px;
+            color: #1b5e2a;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 3px;
+            background: #ff9800;
+            margin: 12px auto 0;
+        }
+
+        .desc-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            align-items: center;
+        }
+
+        .desc-text {
+            flex: 1;
+            font-size: 1.1rem;
+        }
+
+        .desc-text ul {
+            margin-top: 15px;
+            list-style: none;
+        }
+
+        .desc-text li {
+            padding: 8px 0;
+            padding-left: 28px;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="%232e7d32"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>') left center no-repeat;
+            background-size: 18px;
+        }
+
+        .desc-img {
+            flex: 1;
+        }
+
+        .desc-img img {
+            width: 100%;
+            border-radius: 20px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+        }
+
+        .info-cards {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+            margin-top: 30px;
+        }
+
+        .info-card {
+            background: white;
+            padding: 20px;
+            border-radius: 15px;
+            text-align: center;
+            flex: 1;
+            min-width: 150px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .info-card span {
+            font-size: 2rem;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .scheme-container {
+            text-align: center;
+            background: #f0efe7;
+            border-radius: 20px;
+            padding: 20px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .scheme-image {
+            max-width: 100%;
+            height: auto;
+            border-radius: 12px;
+        }
+
+        .scheme-caption {
+            margin-top: 15px;
+            font-size: 0.95rem;
+            color: #555;
+        }
+
+        .house-numbers-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 12px;
+            margin-top: 20px;
+        }
+
+        .number-badge {
+            background: #2e7d32;
+            color: white;
+            padding: 5px 12px;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            font-weight: bold;
+        }
+
+        .address {
+            text-align: center;
+            margin-top: 15px;
+            font-size: 1.1rem;
+            font-weight: 500;
+        }
+
+        .houses-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 30px;
+        }
+
+        .house-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            transition: 0.3s;
+            cursor: pointer;
+        }
+
+        .house-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 24px rgba(0,0,0,0.15);
+        }
+
+        .house-img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+        }
+
+        .house-info {
+            padding: 20px;
+        }
+
+        .house-number {
+            display: inline-block;
+            background: #ff9800;
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            margin-bottom: 10px;
+        }
+
+        .house-name {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .house-price {
+            color: #ff9800;
+            font-size: 1.3rem;
+            font-weight: bold;
+            margin: 10px 0;
+        }
+
+        .house-short {
+            color: #555;
+            margin-bottom: 15px;
+        }
+
+        .more-btn {
+            background: #2e7d32;
+            color: white;
+            border: none;
+            padding: 8px 20px;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .more-btn:hover {
+            background: #1b5e2a;
+        }
+
+        .partner-card {
+            background: linear-gradient(135deg, #f5f7f2 0%, #e8ede4 100%);
+            border: 2px solid #2e7d32;
+            border-radius: 20px;
+            padding: 30px;
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .partner-card h3 {
+            color: #1b5e2a;
+            margin-bottom: 15px;
+        }
+
+        .partner-btn {
+            display: inline-block;
+            background: #2e7d32;
+            color: white;
+            padding: 12px 25px;
+            border-radius: 30px;
+            text-decoration: none;
+            margin-top: 15px;
+            transition: 0.3s;
+        }
+
+        .partner-btn:hover {
+            background: #1b5e2a;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.8);
+            z-index: 1000;
+            overflow-y: auto;
+        }
+
+        .modal-content {
+            background: white;
+            max-width: 900px;
+            margin: 50px auto;
+            border-radius: 20px;
+            padding: 30px;
+            position: relative;
+        }
+
+        .close-modal {
+            position: absolute;
+            right: 20px;
+            top: 15px;
+            font-size: 30px;
+            cursor: pointer;
+            color: #333;
+        }
+
+        .modal-gallery {
+            display: flex;
+            gap: 10px;
+            overflow-x: auto;
+            margin: 20px 0;
+        }
+
+        .modal-gallery img {
+            height: 200px;
+            border-radius: 12px;
+        }
+
+        .modal-video {
+            width: 100%;
+            height: 300px;
+            background: #1a1a2e;
+            margin: 20px 0;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+        }
+
+        .contact-flex {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+            justify-content: space-between;
+        }
+
+        .contact-info {
+            flex: 1;
+        }
+
+        .contact-info p {
+            margin: 15px 0;
+            font-size: 1.1rem;
+        }
+
+        .form-group {
+            flex: 1;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            font-size: 1rem;
+        }
+
+        button[type="submit"] {
+            background: #2e7d32;
+            color: white;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            width: 100%;
+            font-size: 1.1rem;
+        }
+
+        .footer {
+            background: #1a3a1f;
+            color: #ccc;
+            text-align: center;
+            padding: 25px 0;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .hero-content h2 { font-size: 1.8rem; }
+            .section-title { font-size: 1.8rem; }
+            .modal-content { margin: 20px; padding: 20px; }
+        }
+    </style>
+</head>
+<body>
+
+<header class="header">
+    <div class="container">
+        <div class="logo">
+            <h1>🌲 Гренландия</h1>
+            <p>хутор Бетта | Геленджик</p>
+        </div>
+        <div class="contacts-header">
+            <a href="tel:+79881234567" class="phone">+7 (988) 123-45-67</a>
+            <span class="small-text">Ежедневно 09:00–21:00</span>
+        </div>
+        <button class="btn-book" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Забронировать</button>
+    </div>
+</header>
+
+<section class="hero">
+    <div class="hero-content">
+        <h2>Отдых среди природы</h2>
+        <p>Хутор Бетта, Геленджик — тишина, горы, море рядом</p>
+        <button class="btn-book" onclick="document.getElementById('houses').scrollIntoView({behavior:'smooth'})">Выбрать домик</button>
+    </div>
+</section>
+
+<div class="container">
+    <!-- Описание -->
+    <section class="section">
+        <h2 class="section-title">О нашей базе</h2>
+        <div class="desc-grid">
+            <div class="desc-text">
+                <p><strong>Гренландия</strong> — это уютная база отдыха в живописном хуторе Бетта, всего в 15 минутах ходьбы от моря. Здесь вас ждут чистый горный воздух, зелень и полное уединение от городской суеты.</p>
+                <ul>
+                    <li>🏡 Уютные домики на любой вкус</li>
+                    <li>🍽 Летняя кухня и мангальная зона</li>
+                    <li>🚿 Горячая вода, удобства в каждом доме</li>
+                    <li>📶 Бесплатный Wi-Fi на территории</li>
+                    <li>🅿️ Бесплатная парковка</li>
+                    <li>🔥 Место для костра</li>
+                </ul>
+            </div>
+            <div class="desc-img">
+                <img src="https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=600" alt="Природа Бетта">
+            </div>
+        </div>
+
+        <!-- Дополнительные карточки: дорога к морю и парковка -->
+        <div class="info-cards">
+            <div class="info-card">
+                <span>🚶‍♀️</span>
+                <h3>15 минут до моря</h3>
+                <p>Живописная тропа через лес</p>
+            </div>
+            <div class="info-card">
+                <span>🅿️</span>
+                <h3>Бесплатная парковка</h3>
+                <p>Охраняемая территория</p>
+            </div>
+            <div class="info-card">
+                <span>🌲</span>
+                <h3>Сосновый лес</h3>
+                <p>Чистейший воздух</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Схема территории -->
+    <section class="section">
+        <h2 class="section-title">Схема территории</h2>
+        <div class="scheme-container">
+            <img src="https://i.imgur.com/8QnW7kD.png" alt="Схема территории Гренландия" class="scheme-image" id="schemeImage">
+            <div class="scheme-caption">
+                📍 Схема расположения домиков на территории базы
+            </div>
+            <div class="house-numbers-list">
+                <span class="number-badge">12/1</span>
+                <span class="number-badge">12/2</span>
+                <span class="number-badge">18/1</span>
+                <span class="number-badge">18/2</span>
+                <span class="number-badge">19</span>
+                <span class="number-badge">20</span>
+                <span class="number-badge">24/1</span>
+                <span class="number-badge">24/2</span>
+                <span class="number-badge">25</span>
+            </div>
+        </div>
+        <div class="address">
+            📍 Краснодарский край, городской округ Геленджик, хутор Бетта, Подгорная улица
+        </div>
+        <p style="text-align:center; margin-top:15px;">Как добраться: от Геленджика 35 км по трассе М-4, поворот на Бетта, далее по указателям «Гренландия».</p>
+    </section>
+
+    <!-- Домики -->
+    <section id="houses" class="section">
+        <h2 class="section-title">Наши домики</h2>
+        <div class="houses-grid" id="housesGrid"></div>
+    </section>
+
+    <!-- Партнёры -->
+    <section class="section">
+        <h2 class="section-title">Наши партнёры</h2>
+        <div class="partner-card">
+            <h3>🏠 Гостевой дом HouseInDaWoods</h3>
+            <p>Уютный гостевой дом на участке №25. Идеальное место для комфортного отдыха в окружении природы.</p>
+            <p>📍 Краснодарский край, городской округ Геленджик, хутор Бетта</p>
+            <a href="https://yandex.ru/navi/org/gostevoy_dom_houseindawoods/188794730708" target="_blank" class="partner-btn">Посмотреть на карте →</a>
+        </div>
+    </section>
+
+    <!-- Контакты -->
+    <section id="contact" class="section">
+        <h2 class="section-title">Связь с нами</h2>
+        <div class="contact-flex">
+            <div class="contact-info">
+                <p>📞 Телефон: <a href="tel:+79881234567">+7 (988) 123-45-67</a></p>
+                <p>📱 WhatsApp: <a href="https://wa.me/79881234567">+7 (988) 123-45-67</a></p>
+                <p>📧 Email: greenland@betta.ru</p>
+                <p>📍 Адрес: хутор Бетта, Подгорная, 15</p>
+                <p>⭐ Работаем с 2015 года</p>
+            </div>
+            <div class="form-group">
+                <form id="bookingForm">
+                    <input type="text" placeholder="Ваше имя" required>
+                    <input type="tel" placeholder="Телефон" required>
+                    <input type="text" placeholder="Желаемый домик">
+                    <input type="text" placeholder="Даты заезда / выезда">
+                    <textarea rows="3" placeholder="Пожелания или вопрос"></textarea>
+                    <button type="submit">Отправить заявку</button>
+                    <p style="font-size:0.8rem; margin-top:10px;">Нажимая кнопку, вы соглашаетесь с обработкой данных</p>
+                </form>
+            </div>
+        </div>
+    </section>
+</div>
+
+<footer class="footer">
+    <div class="container">
+        <p>База отдыха «Гренландия» © 2026 | хутор Бетта | Сайт создан для удобства гостей</p>
+    </div>
+</footer>
+
+<!-- Модальное окно -->
+<div id="houseModal" class="modal">
+    <div class="modal-content">
+        <span class="close-modal">&times;</span>
+        <h2 id="modalTitle">Название домика</h2>
+        <div id="modalGallery" class="modal-gallery"></div>
+        <div id="modalVideo" class="modal-video"></div>
+        <p id="modalDesc"></p>
+        <p><strong id="modalPrice"></strong></p>
+        <button class="btn-book" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'}); document.getElementById('houseModal').style.display='none';">Забронировать</button>
+    </div>
+</div>
+
+<script>
+    // ДАННЫЕ ДОМИКОВ (реальная структура)
+    const houses = [
+        {
+            id: 1,
+            number: "12/1",
+            name: "Дом 12/1",
+            shortDesc: "Уютный дом в сосновом лесу",
+            price: "5000 ₽/сутки",
+            mainImg: "https://avatars.mds.yandex.net/get-sprav-products/2510998/2a0000019e289281d47c1e0cdf8820e2c427/orig",
+            fullDesc: "Просторный дом на 4 человек. Есть кухонный уголок, санузел, терраса. Рядом мангальная зона.",
+            gallery: ["https://avatars.mds.yandex.net/get-sprav-products/2510998/2a0000019e289281d47c1e0cdf8820e2c427/orig"],
+            videoUrl: ""
+        },
+        {
+            id: 2,
+            number: "12/2",
+            name: "Дом 12/2",
+            shortDesc: "Комфортный дом для отдыха",
+            price: "5000 ₽/сутки",
+            mainImg: "https://avatars.mds.yandex.net/get-sprav-products/2773996/2a0000019e28915656f54d512a187142fffa/orig",
+            fullDesc: "Уютный дом с современным ремонтом. Есть всё необходимое для проживания.",
+            gallery: ["https://avatars.mds.yandex.net/get-sprav-products/2773996/2a0000019e28915656f54d512a187142fffa/orig"],
+            videoUrl: ""
+        },
+        {
+            id: 3,
+            number: "18/1",
+            name: "Купол 18/1 (левая половина)",
+            shortDesc: "Необычный дом-купол",
+            price: "6500 ₽/сутки",
+            mainImg: "https://avatars.mds.yandex.net/get-sprav-products/5235338/2a0000019e2890b9eb034a5e3ac50fcfa32b/orig",
+            fullDesc: "Уникальный дом-купол с панорамным остеклением. Левая половина. Неповторимая атмосфера и виды.",
+            gallery: ["https://avatars.mds.yandex.net/get-sprav-products/5235338/2a0000019e2890b9eb034a5e3ac50fcfa32b/orig"],
+            videoUrl: ""
+        },
+        {
+            id: 4,
+            number: "18/2",
+            name: "Купол 18/2 (правая половина)",
+            shortDesc: "Вторая половина купола",
+            price: "6500 ₽/сутки",
+            mainImg: "https://avatars.mds.yandex.net/get-sprav-products/3912342/2a0000019e28901cd24688398740d0fa909b/orig",
+            fullDesc: "Уникальный дом-купол с панорамным остеклением. Правая половина. Идеально для романтического отдыха.",
+            gallery: ["https://avatars.mds.yandex.net/get-sprav-products/3912342/2a0000019e28901cd24688398740d0fa909b/orig"],
+            videoUrl: ""
+        },
+        {
+            id: 5,
+            number: "19",
+            name: "Шале 19",
+            shortDesc: "Дом в альпийском стиле",
+            price: "7500 ₽/сутки",
+            mainImg: "https://avatars.mds.yandex.net/get-sprav-products/2773996/2a0000019e288c8f65fe89caaa2b2c2f9c5e/orig",
+            fullDesc: "Просторное шале из натурального дерева. Две спальни, большая терраса, вид на лес.",
+            gallery: ["https://avatars.mds.yandex.net/get-sprav-products/2773996/2a0000019e288c8f65fe89caaa2b2c2f9c5e/orig"],
+            videoUrl: ""
+        },
+        {
+            id: 6,
+            number: "20",
+            name: "Дом 20 (пятикомнатный)",
+            shortDesc: "Просторный дом для большой компании",
+            price: "10000 ₽/сутки",
+            mainImg: "https://avatars.mds.yandex.net/get-sprav-products/3912342/2a0000019dda923457e3fd59fa1f0eee62dc/orig",
+            fullDesc: "Пятикомнатный дом на 8-10 человек. Идеален для семейного отдыха или компании друзей.",
+            gallery: ["https://avatars.mds.yandex.net/get-sprav-products/3912342/2a0000019dda923457e3fd59fa1f0eee62dc/orig"],
+            videoUrl: ""
+        },
+        {
+            id: 7,
+            number: "24/1",
+            name: "Дом 24/1",
+            shortDesc: "Отдельная секция дома 24",
+            price: "5500 ₽/сутки",
+            mainImg: "https://avatars.mds.yandex.net/get-sprav-products/2510998/2a0000019dd371462be3b29be2b27d331273/orig",
+            fullDesc: "Первая половина дома 24. Уютно, комфортно, всё необходимое внутри.",
+            gallery: ["https://avatars.mds.yandex.net/get-sprav-products/2510998/2a0000019dd371462be3b29be2b27d331273/orig"],
+            videoUrl: ""
+        },
+        {
+            id: 8,
+            number: "24/2",
+            name: "Дом 24/2",
+            shortDesc: "Вторая секция дома 24",
+            price: "5500 ₽/сутки",
+            mainImg: "https://avatars.mds.yandex.net/get-sprav-products/2773996/2a0000019e28915656f54d512a187142fffa/orig",
+            fullDesc: "Вторая половина дома 24. Полная изоляция, свой вход, комфортный отдых.",
+            gallery: ["https://avatars.mds.yandex.net/get-sprav-products/2773996/2a0000019e28915656f54d512a187142fffa/orig"],
+            videoUrl: ""
+        },
+        {
+            id: 9,
+            number: "25",
+            name: "Участок 25 (партнёр)",
+            shortDesc: "Гостевой дом HouseInDaWoods",
+            price: "Уточняйте",
+            mainImg: "https://avatars.mds.yandex.net/get-sprav-products/5235338/2a0000019e2890b9eb034a5e3ac50fcfa32b/orig",
+            fullDesc: "Гостевой дом HouseInDaWoods — наш надёжный партнёр. Уютное размещение в окружении леса. Подробности по ссылке ниже.",
+            gallery: ["https://avatars.mds.yandex.net/get-sprav-products/5235338/2a0000019e2890b9eb034a5e3ac50fcfa32b/orig"],
+            videoUrl: "",
+            externalLink: "https://yandex.ru/navi/org/gostevoy_dom_houseindawoods/188794730708"
+        }
+    ];
+
+    function renderHouses() {
+        const grid = document.getElementById('housesGrid');
+        grid.innerHTML = '';
+        houses.forEach(house => {
+            const card = document.createElement('div');
+            card.className = 'house-card';
+            card.innerHTML = `
+                <img class="house-img" src="${house.mainImg}" alt="${house.name}" onerror="this.src='https://via.placeholder.com/400x220?text=${house.number}'">
+                <div class="house-info">
+                    <div class="house-number">Дом ${house.number}</div>
+                    <div class="house-name">${house.name}</div>
+                    <div class="house-short">${house.shortDesc}</div>
+                    <div class="house-price">💰 ${house.price}</div>
+                    <button class="more-btn" data-id="${house.id}">Подробнее</button>
+                </div>
+            `;
+            grid.appendChild(card);
+        });
+
+        document.querySelectorAll('.more-btn').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                const id = parseInt(btn.getAttribute('data-id'));
+                openModal(id);
+            });
+        });
+    }
+
+    function openModal(id) {
+        const house = houses.find(h => h.id === id);
+        if (!house) return;
+
+        document.getElementById('modalTitle').innerHTML = `Дом ${house.number}: ${house.name}`;
+        document.getElementById('modalDesc').innerHTML = house.fullDesc;
+        document.getElementById('modalPrice').innerHTML = `💰 Цена: ${house.price}`;
+
+        const galleryDiv = document.getElementById('modalGallery');
+        galleryDiv.innerHTML = '';
+        if (house.gallery && house.gallery.length > 0) {
+            house.gallery.forEach(imgUrl => {
+                const img = document.createElement('img');
+                img.src = imgUrl;
+                img.style.height = '200px';
+                img.style.borderRadius = '12px';
+                img.style.marginRight = '10px';
+                galleryDiv.appendChild(img);
+            });
+        }
+
+        const videoDiv = document.getElementById('modalVideo');
+        if (house.videoUrl && house.videoUrl.trim() !== '') {
+            videoDiv.innerHTML = `<iframe width="100%" height="100%" src="${house.videoUrl}" frameborder="0" allowfullscreen style="border-radius:12px;"></iframe>`;
+        } else {
+            videoDiv.innerHTML = `<div style="background:#2c3e2f; width:100%; height:100%; display:flex; align-items:center; justify-content:center;">📹 Видео-обзор скоро</div>`;
+        }
+
+        if (house.externalLink) {
+            const linkBtn = document.createElement('a');
+            linkBtn.href = house.externalLink;
+            linkBtn.target = '_blank';
+            linkBtn.className = 'partner-btn';
+            linkBtn.style.display = 'inline-block';
+            linkBtn.style.marginTop = '15px';
+            linkBtn.innerText = 'Перейти на страницу партнёра →';
+            document.getElementById('modalPrice').insertAdjacentElement('afterend', linkBtn);
+        }
+
+        document.getElementById('houseModal').style.display = 'block';
+    }
+
+    document.querySelector('.close-modal').addEventListener('click', () => {
+        document.getElementById('houseModal').style.display = 'none';
+        const extraLink = document.querySelector('#modalPrice + a');
+        if (extraLink) extraLink.remove();
+    });
+    window.addEventListener('click', (e) => {
+        const modal = document.getElementById('houseModal');
+        if (e.target === modal) {
+            modal.style.display = 'none';
+            const extraLink = document.querySelector('#modalPrice + a');
+            if (extraLink) extraLink.remove();
+        }
+    });
+
+    document.getElementById('bookingForm').addEventListener('submit', (e) => {
+        e.preventDefault();
+        alert('Спасибо! Ваша заявка отправлена. Мы свяжемся с вами в ближайшее время.');
+        e.target.reset();
+    });
+
+    renderHouses();
+</script>
+</body>
+</html>
