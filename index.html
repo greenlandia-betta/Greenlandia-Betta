@@ -249,6 +249,23 @@
             font-weight: 500;
         }
 
+        .map-widget-container {
+            position: relative;
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .map-widget-container iframe {
+            width: 100%;
+            height: 400px;
+            border: none;
+            display: block;
+        }
+
         .houses-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
@@ -456,6 +473,7 @@
             .hero-content h2 { font-size: 1.8rem; }
             .section-title { font-size: 1.8rem; }
             .modal-content { margin: 20px; padding: 20px; }
+            .map-widget-container iframe { height: 300px; }
         }
     </style>
 </head>
@@ -468,7 +486,7 @@
             <p>хутор Бетта | Геленджик</p>
         </div>
         <div class="contacts-header">
-            <a href="tel:+79881234567" class="phone">+7 (988) 123-45-67</a>
+            <a href="tel:+79067005005" class="phone">+7 (906) 700-50-05</a>
             <span class="small-text">Ежедневно 09:00–21:00</span>
         </div>
         <button class="btn-book" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Забронировать</button>
@@ -504,7 +522,6 @@
             </div>
         </div>
 
-        <!-- Дополнительные карточки: дорога к морю и парковка -->
         <div class="info-cards">
             <div class="info-card">
                 <span>🚶‍♀️</span>
@@ -524,11 +541,16 @@
         </div>
     </section>
 
-    <!-- Схема территории -->
+    <!-- Схема территории и карта -->
     <section class="section">
-        <h2 class="section-title">Схема территории</h2>
+        <h2 class="section-title">Схема проезда</h2>
+        
+        <!-- Статичная карта-схема -->
         <div class="scheme-container">
-            <img src="https://i.imgur.com/8QnW7kD.png" alt="Схема территории Гренландия" class="scheme-image" id="schemeImage">
+            <img src="https://3.downloader.disk.yandex.ru/preview/ed92d90678b0f98b1b1d0478cc1d6cd36ff195630d321c8d238e8e34b3ed683a/inf/FERff7PVAkXvkfH9QMRR5MlBtXFvFuWShGyWF8PdPPesYyTQG4WR3Mpt2Qrzr7dtiocGS2xh8Ru8YB8cxc_SMw%3D%3D?uid=1067882401&filename=photo_2026-06-16_17-03-10.jpg&disposition=inline&hash=&limit=0&content_type=image%2Fjpeg&owner_uid=1067882401&tknv=v3&is_direct_zip_experiment=1&size=1891x872" 
+                 alt="Схема территории Гренландия" 
+                 class="scheme-image"
+                 onerror="this.src='https://via.placeholder.com/1200x600?text=Схема+территории'">
             <div class="scheme-caption">
                 📍 Схема расположения домиков на территории базы
             </div>
@@ -544,6 +566,24 @@
                 <span class="number-badge">25</span>
             </div>
         </div>
+
+        <!-- Интерактивная карта (виджет с вашей организацией) -->
+        <div style="margin-top: 30px; text-align: center;">
+            <h3 style="color: #1b5e2a; margin-bottom: 15px;">📍 Интерактивная карта</h3>
+            <div class="map-widget-container">
+                <iframe src="https://yandex.ru/map-widget/v1/?z=12&ol=biz&oid=164357119362" 
+                        width="100%" 
+                        height="400" 
+                        frameborder="0"
+                        style="border: none; display: block;"
+                        allowfullscreen>
+                </iframe>
+            </div>
+            <p style="margin-top: 10px; font-size: 0.9rem; color: #555;">
+                Нажмите на карту для увеличения или построения маршрута
+            </p>
+        </div>
+
         <div class="address">
             📍 Краснодарский край, городской округ Геленджик, хутор Бетта, Подгорная улица
         </div>
@@ -572,8 +612,8 @@
         <h2 class="section-title">Связь с нами</h2>
         <div class="contact-flex">
             <div class="contact-info">
-                <p>📞 Телефон: <a href="tel:+79881234567">+7 (988) 123-45-67</a></p>
-                <p>📱 WhatsApp: <a href="https://wa.me/79881234567">+7 (988) 123-45-67</a></p>
+                <p>📞 Телефон: <a href="tel:+79067005005">+7 (906) 700-50-05</a></p>
+                <p>📱 WhatsApp: <a href="https://wa.me/79067005005">+7 (906) 700-50-05</a></p>
                 <p>📧 Email: greenland@betta.ru</p>
                 <p>📍 Адрес: хутор Бетта, Подгорная, 15</p>
                 <p>⭐ Работаем с 2015 года</p>
@@ -613,7 +653,7 @@
 </div>
 
 <script>
-    // ДАННЫЕ ДОМИКОВ (реальная структура)
+    // ДАННЫЕ ДОМИКОВ
     const houses = [
         {
             id: 1,
@@ -771,6 +811,10 @@
         } else {
             videoDiv.innerHTML = `<div style="background:#2c3e2f; width:100%; height:100%; display:flex; align-items:center; justify-content:center;">📹 Видео-обзор скоро</div>`;
         }
+
+        // Удаляем старую ссылку, если была
+        const oldLink = document.querySelector('#modalPrice + a');
+        if (oldLink) oldLink.remove();
 
         if (house.externalLink) {
             const linkBtn = document.createElement('a');
